@@ -1,0 +1,14 @@
+body{
+	font-family: 'Microsoft YaHei',sans-serif;
+	position: relative;
+	margin:0px;
+	background-color: #092B40;
+}
+.container{
+	width:1200px;
+	padding:50px;
+	margin:400px auto;
+	overflow: hidden;
+	color:#EBEBEB;
+	text-align: center;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="keywords" content=""/>
+		<meta name="author" content="ZhangWeiJian"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/regist.css" />
+		<title>注册</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="regist">
+				<form action="/regist/" method="post">
+					{% csrf_token %}
+					<input type="text" name="id" id="id" class="inputArea" placeholder="用户ID" />
+					<input type="password" name="pw" id="pw" class="inputArea" placeholder="密码" />
+					<input type="text" name="name" id="name" class="inputArea" placeholder="用户名" />
+					<select id="sex" name="sex" class="inputArea">
+						<option value="True">男</option>
+						<option value="">女</option>
+					</select>
+					<input type="text" name="age" id="age" class="inputArea" placeholder="年龄" />
+					<input type="text" name="email" id="email" class="inputArea" placeholder="E-Mail" />
+					<input type="text" name="phonenum" id="phonenum" class="inputArea" placeholder="手机号" />
+
+					<button id="submit" class="registBtn btn" type="submit" >注册</button>
+					<a id="backBtn" class="backBtn btn" href="/loginView" >返回</a>
+					<p class="fail">{{msgFail}}</p>
+					<p class="success">{{msgTrue}}</p>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="../static/scripts/jquery.js"></script>
+		<script type="text/javascript" src="../static/scripts/csrf.js"></script>
+	</body>
+</html>

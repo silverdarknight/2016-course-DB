@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="keywords" content=""/>
+		<meta name="author" content="ZhangWeiJian"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/userDetail.css" />
+		<script type="text/javascript" src="../static/scripts/jquery.js"></script>
+		<title>用户信息界面</title>
+	</head>
+	<body>
+		<div class="nav">
+			{% if is_staff %}
+			<a href="/main" class="bookLib">管理员中心</a>
+			{% else %}
+			<a href="/main" class="bookLib">用户中心</a>
+			{% endif %}
+			<a href="/viewBook/?bookLikeName=&mode=simple&startPage=1&offset=10" class="bookLib">图书库</a>
+		</div>
+		<div class="currentUser">
+			<div>
+				<span class="staffId"><strong>{{currentUser.userId}}</strong></span>
+				{% if is_staff %}
+				管理员&nbsp;&nbsp;&nbsp;
+				{% else %}
+				用户&nbsp;&nbsp;&nbsp;
+				{% endif %}
+				<br/>
+				<span class="staffName"><strong>{{currentUser.userName}}</strong></span><br/>
+				<a href="/logoutView" class="logout">登出</a>
+			</div>
+		</div>
+		<div class="container">
+			<div class="userInfoContainer backWhite fontBlue">
+				<p class="infoItem"><span class="infoBefore">用户ID</span>:<span>{{userInfo.userid}}</span></p>
+				<p class="infoItem"><span class="infoBefore">用户名</span>:<span>{{userInfo.username}}</span></p>
+				<p class="infoItem"><span class="infoBefore">性别</span>:<span>{{userInfo.sex}}</span></p>
+				<p class="infoItem"><span class="infoBefore">年龄</span>:<span>{{userInfo.age}}</span></p>
+				<p class="infoItem"><span class="infoBefore">E-mail</span>:<span>{{userInfo.email}}</span></p>
+				<p class="infoItem"><span class="infoBefore">联系电话</span>:<span>{{userInfo.pn}}</span></p>
+				<p class="infoItem"><span class="infoBefore">注册时间</span>:<span>{{userInfo.time}}</span></p>
+				<hr />
+				<div class="borrowInfoList">
+					<table class="borrowTable" cellpadding="10">
+						<tbody>
+							<tr>
+								<th></th>
+								<th>书名</th>
+								<th>操作员ID</th>
+								<th>是否已还</th>
+							</tr>
+							{% for borrowItem in borrowList %}
+								<tr>
+									<td>{{borrowItem.itemNum}}</td>
+									<td>{{borrowItem.bookName}}</td>
+									<td>{{borrowItem.staffId}}</td>
+									{% if borrowItem.hasReturn %}
+									<td class="success"><strong>&#10004</strong></td>
+									{% else %}
+									<td class="fail"><strong>&#10008</strong></td>
+									{% endif %}
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<hr />
+			</div>
+		</div>
+		<script type="text/javascript" src="../static/scripts/userDetail.js"></script>
+	</body>
+</html>
